@@ -1,0 +1,88 @@
+{
+    "name": "somali-python-teacher",
+    "displayName": "Somali Python AI Teacher",
+    "description": "Baro programming-ka Python adiga oo isticmaalaya af-soomaali gudaha VS Code.",
+    "version": "0.1.0",
+    "publisher": "amixiid",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/amixiid/python-somali-extention.git"
+    },
+    "icon": "media/logo.png",
+    "engines": {
+        "vscode": "^1.75.0"
+    },
+    "categories": [
+        "Education",
+        "Programming Languages",
+        "Snippets"
+    ],
+    "keywords": [
+        "python",
+        "somali",
+        "learning",
+        "programming",
+        "ai"
+    ],
+    "activationEvents": [
+        "onLanguage:python"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "somali-python-teacher.explainCode",
+                "title": "Explain Python Code in Somali"
+            },
+            {
+                "command": "somali-python-teacher.openPanel",
+                "title": "Open Python Somali Teacher Panel"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "somali-python-teacher.explainCode",
+                    "when": "editorLangId == python && editorHasSelection",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "Somali Python Teacher",
+            "properties": {
+                "SomaliPythonTeacher.beginnerMode": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Marka ay shidan tahay, sharraxaaduhu way fududaan doonaan oo waxaa ku jiri doona tusaalooyin."
+                }
+            }
+        },
+        "viewsWelcome": [
+            {
+                "view": "somali-python-teacher-view",
+                "contents": "Ku soo dhawaaw Somali Python AI Teacher! \n[Open Panel](command:somali-python-teacher.openPanel)"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/node": "^16.18.126",
+        "@types/node-fetch": "^2.6.13",
+        "@types/vscode": "^1.75.0",
+        "@typescript-eslint/eslint-plugin": "^5.53.0",
+        "@typescript-eslint/parser": "^5.53.0",
+        "eslint": "^8.34.0",
+        "typescript": "^4.9.5"
+    },
+    "dependencies": {
+        "node-fetch": "^2.7.0"
+    }
+}
